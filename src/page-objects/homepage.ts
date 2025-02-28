@@ -7,7 +7,7 @@ export class HomePage {
         this.page = page
     }
     async clickAbTestingLink() {
-        await this.page.getByRole('link', { name: "A/B Testing" }).click()
-        await expect(this.page).toHaveTitle('The Internet')
+        await this.page.getByText("A/B Testing").click()
+        await expect(this.page.getByRole('heading', {name:"A/B Test Control"})).toHaveText('A/B Test Control')
     }
 }

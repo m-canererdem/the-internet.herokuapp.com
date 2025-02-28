@@ -1,10 +1,14 @@
 import { test, expect } from "@playwright/test";
-import { PageManager } from "../../page-objects/pageManager";
+import { PageManager } from "../page-objects/pageManager";
+
 
 test.describe("Home Page Scenerios", () => {
+
   test.beforeEach(async ({ page }) => {
-    await page.goto("/");
+    const pm = new PageManager(page)
+    await pm.navigateTo().homePage()
   });
+
 
   test("has title", async ({ page }) => {
     await expect(page).toHaveTitle(/The Internet/);
@@ -14,4 +18,5 @@ test.describe("Home Page Scenerios", () => {
     const pm = new PageManager(page)
     await pm.onHomePage().clickAbTestingLink()
   });
+
 });

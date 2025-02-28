@@ -1,0 +1,21 @@
+{
+  "name": "the-internet-automation",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test":"npx playwright test --project=chromium",
+    "test:headed":"npx playwright test --project --headed",
+    "test:all":"npx playwright test "
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.5"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}

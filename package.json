@@ -7,8 +7,8 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test":"npx playwright test --project=chromium",
-    "test:headed":"npx playwright test --project --headed",
+    "test":"npx playwright test --project=chromium --ui",
+    "test:headed":"npx playwright test --headed",
     "test:all":"npx playwright test "
   },
   "devDependencies": {

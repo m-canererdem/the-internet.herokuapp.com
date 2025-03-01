@@ -1,7 +1,7 @@
 import { test as base } from "@playwright/test";
 import { PageManager} from "../page-objects/pageManager";
 
-type BaseFixture = {
+export type BaseFixture = {
     pm: PageManager
 }
 

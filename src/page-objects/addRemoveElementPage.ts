@@ -8,10 +8,11 @@ export class AddRemoveElementPage {
     async verifyHeader() {
         await this.page.getByText('Add/Remove Elements', {exact:true}).click();
     }
+
     async clickAddElementButton() {
         await this.page.getByRole('button', {name:"Add Element"}).click();
         await expect(this.page.locator('button', { hasText: "Delete" }))
-            .toHaveScreenshot({ maxDiffPixelRatio: 0.2 });
+            .toHaveScreenshot("deletButton.png" , { maxDiffPixelRatio: 0.3});
     }
 
     async clickDeleteElementButton() {

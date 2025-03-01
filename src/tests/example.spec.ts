@@ -1,7 +1,7 @@
 import { expect } from "@playwright/test";
 import { test } from "../fixtures/base.setup";
 
-test.describe("Home Page Scenerios", () => {
+test.describe("Home Page Scenerios @homepage", () => {
   test.beforeEach(async ({ pm }) => {});
 
   test("has title", async ({ pm }) => {
@@ -69,5 +69,33 @@ test.describe("Add & Remove  Element Page @addremove", () => {
 
   test("Verify, Delete Button", async ({ pm }) => {
     await pm.onAddRemoveElemenPage().clickDeleteElementButton();
+  });
+});
+
+test.describe("Basic Auth Page Scenerio @basicauth", () => {
+  test.beforeEach(async ({ pm }) => {
+    await pm.navigateTo().basicAuthPage();
+  });
+
+  test("Verify , title is correct", async ({ pm }) => {
+    await pm.onBasicAuthPage().verifyPopupTitle();
+  });
+
+  test("Verify, Log in with valid credentials", async ({ pm }) => {
+    await pm
+      .onBasicAuthPage()
+      .provideValidCredentialsAndSingInWithCredentials();
+  });
+
+  test("Verify, Log in with valid credentials with route", async ({ pm }) => {
+    await pm
+      .onBasicAuthPage()
+      .provideValidCredentialsAndSingInWithRouteHeader();
+  });
+
+  test("Verify, Log in with empty credentials", async ({ pm }) => {
+    await pm
+      .onBasicAuthPage()
+      .provideEmptyCredentialsAndSingInWithCredentials();
   });
 });

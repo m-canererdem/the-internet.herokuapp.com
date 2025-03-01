@@ -1,4 +1,5 @@
 import { expect, Page } from "@playwright/test";
+import { links } from "./homePage";
 
 export class Navigation {
   page: Page;
@@ -13,16 +14,23 @@ export class Navigation {
     );
   }
   async aAndBTestingPage() {
-    await this.goToPage("A/B Testing");
+    await this.goToPage(links[0]);
     await expect(this.page).toHaveURL(
       "https://the-internet.herokuapp.com/abtest"
     );
   }
 
   async addOrRemoveElementsPage() {
-    await this.goToPage("Add/Remove Elements");
+    await this.goToPage(links[1]);
     await expect(this.page).toHaveURL(
       "https://the-internet.herokuapp.com/add_remove_elements/"
+    );
+  }
+
+  async basicAuthPage() {
+    await this.goToPage(links[2]);
+    await expect(this.page).toHaveURL(
+      "https://the-internet.herokuapp.com/basic_auth"
     );
   }
 

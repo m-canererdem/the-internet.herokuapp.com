@@ -13,7 +13,7 @@ export default defineConfig({
     viewport: { width: 1280, height: 720 },
     trace: "off",
   },
-
+  snapshotDir: './src/snapshots',
   projects: [
     {
       name: "chromium",

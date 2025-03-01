@@ -1,14 +1,16 @@
 import { BrowserContext, Page } from "@playwright/test";
-import { HomePage } from "./homepage";
+import { HomePage } from "./homePage";
 import { Navigation } from "./navigation";
 import { ABTestingPage } from "./aBTestingPage";
 import { AddRemoveElementPage } from "./addRemoveElementPage";
+import { BasicAuthPage } from "./basicAuthPage";
 
 export class PageManager {
   private readonly navigation: Navigation;
   private readonly homePage: HomePage;
   private readonly aAndBTestingPage: ABTestingPage;
   private readonly addRemoveElementPage: AddRemoveElementPage;
+  private readonly basicAuthPage: BasicAuthPage;
 
   constructor(readonly page: Page, readonly context: BrowserContext) {
     this.page = page;
@@ -19,6 +21,7 @@ export class PageManager {
     this.homePage = new HomePage(this.page);
     this.aAndBTestingPage = new ABTestingPage(this.page);
     this.addRemoveElementPage = new AddRemoveElementPage(this.page);
+    this.basicAuthPage = new BasicAuthPage(this.page);
   }
 
   navigateTo() {
@@ -35,5 +38,9 @@ export class PageManager {
 
   onAddRemoveElemenPage() {
     return this.addRemoveElementPage;
+  }
+
+  onBasicAuthPage() {
+    return this.basicAuthPage;
   }
 }

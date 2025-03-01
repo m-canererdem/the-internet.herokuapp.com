@@ -65,7 +65,7 @@ export class HomePage {
     await expect(newPage).toHaveURL("https://elementalselenium.com/");
   }
 }
-const links = [
+export const links = [
   "A/B Testing",
   "Add/Remove Elements",
   "Basic Auth",

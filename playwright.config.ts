@@ -10,7 +10,7 @@ export default defineConfig({
   reporter: "list",
   use: {
     baseURL: process.env.URL || 'https://the-internet.herokuapp.com',
-    viewport: { width: 1920, height: 1080 },
+    viewport: { width: 1280, height: 720 },
     trace: "off",
   },
 

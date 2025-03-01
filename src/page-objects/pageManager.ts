@@ -1,25 +1,32 @@
 import { BrowserContext, Page } from "@playwright/test";
 import { HomePage } from "./homepage";
 import { Navigation } from "./navigation";
+import { AandBTestingPage } from "./aAndBTestingPage";
 
 export class PageManager {
-  readonly page: Page;
-  readonly context: BrowserContext;
-  readonly homePage: HomePage;
-  readonly navigation: Navigation;
+  private readonly navigation: Navigation;
+  private readonly homePage: HomePage;
+  private readonly aAndBTestingPage: AandBTestingPage;
 
-  constructor(page: Page, context?: any) {
+  constructor(readonly page: Page, readonly context: BrowserContext) {
     this.page = page;
     this.context = context;
-    this.homePage = new HomePage(this.page);
+
     this.navigation = new Navigation(this.page);
+
+    this.homePage = new HomePage(this.page);
+    this.aAndBTestingPage = new AandBTestingPage(this.page);
+  }
+
+  navigateTo() {
+    return this.navigation;
   }
 
   onHomePage() {
     return this.homePage;
   }
 
-  navigateTo() {
-    return this.navigation;
+  onAAndBTestingPage() {
+    return this.aAndBTestingPage;
   }
 }

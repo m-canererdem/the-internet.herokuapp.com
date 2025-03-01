@@ -2,8 +2,7 @@ import { expect } from "@playwright/test";
 import { test } from "../fixtures/base.setup";
 
 test.describe("Home Page Scenerios", () => {
-  test.beforeEach(async ({ pm }) => {
-  });
+  test.beforeEach(async ({ pm }) => {});
 
   test("has title", async ({ pm }) => {
     await expect(pm.page).toHaveTitle(/The Internet/);
@@ -32,7 +31,26 @@ test.describe("Home Page Scenerios", () => {
     await pm.navigateTo().homePage();
     await pm.onHomePage().clickForkMeOnGithubKnot();
     await pm.page.goBack({ waitUntil: "load" });
-    await pm.onHomePage().clickElementalSeleniumFootbarLink2(pm.context);
+    await pm.onHomePage().clickElementalSeleniumFootbarLink(pm.context);
     await pm.page.goBack({ waitUntil: "load" });
+  });
+});
+
+test.describe("A/B Testing Page Scenerios", () => {
+
+  test.beforeEach(async ({ pm }) => {
+    await pm.navigateTo().aAndBTestingPage()
+  });
+
+  test("Verify that, header is correct", async ({ pm }) => {
+    await pm.onAAndBTestingPage().verifyHeader()
+  });
+
+  test("Verify, Knot Link", async ({ pm }) => {
+    await pm.onAAndBTestingPage().clickKnotLink()
+  });
+
+  test("Verify, Footbar link", async ({ pm }) => {
+    await pm.onAAndBTestingPage().clickFootbarLink(pm.context)
   });
 });

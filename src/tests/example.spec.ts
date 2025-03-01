@@ -19,4 +19,20 @@ test.describe("Home Page Scenerios", () => {
     await pm.onHomePage().clickAbTestingLink()
   });
 
+  test('Verify that, first 5 link is working', async ({ page }) => {
+    const pm = new PageManager(page)
+    await pm.onHomePage().clickAbTestingLink()
+    await pm.page.goBack({waitUntil:"load"})
+    await pm.onHomePage().clickAddRemoveElements()
+    await pm.page.goBack({waitUntil:"load"})
+    await pm.onHomePage().clickBasicAuth()
+    await pm.page.goBack({waitUntil:"load"})
+    await pm.onHomePage().clickBrokenImages()
+    await pm.page.goBack({waitUntil:"load"})
+    await pm.onHomePage().clickChallengingDOM()
+    await pm.page.goBack({waitUntil:"load"})
+    await pm.onHomePage().clickCheckboxes()
+    await pm.page.goBack({waitUntil:"load"})
+  })
+
 });

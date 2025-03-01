@@ -36,21 +36,38 @@ test.describe("Home Page Scenerios", () => {
   });
 });
 
-test.describe("A/B Testing Page Scenerios", () => {
-
+test.describe("A/B Testing Page @ab", () => {
   test.beforeEach(async ({ pm }) => {
-    await pm.navigateTo().aAndBTestingPage()
+    await pm.navigateTo().aAndBTestingPage();
   });
 
   test("Verify that, header is correct", async ({ pm }) => {
-    await pm.onAAndBTestingPage().verifyHeader()
+    await pm.onAAndBTestingPage().verifyHeader();
   });
 
   test("Verify, Knot Link", async ({ pm }) => {
-    await pm.onAAndBTestingPage().clickKnotLink()
+    await pm.onAAndBTestingPage().clickKnotLink();
   });
 
   test("Verify, Footbar link", async ({ pm }) => {
-    await pm.onAAndBTestingPage().clickFootbarLink(pm.context)
+    await pm.onAAndBTestingPage().clickFootbarLink(pm.context);
+  });
+});
+
+test.describe("Add & Remove  Element Page @addremove", () => {
+  test.beforeEach(async ({ pm }) => {
+    await pm.navigateTo().addOrRemoveElementsPage();
+  });
+
+  test("Verify that, header is correct", async ({ pm }) => {
+    await pm.onAddRemoveElemenPage().verifyHeader();
+  });
+
+  test("Verify, Add Element Button", async ({ pm }) => {
+    await pm.onAddRemoveElemenPage().clickAddElementButton();
+  });
+
+  test("Verify, Delete Button", async ({ pm }) => {
+    await pm.onAddRemoveElemenPage().clickDeleteElementButton();
   });
 });

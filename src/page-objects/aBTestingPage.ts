@@ -1,6 +1,6 @@
 import { Page, expect, BrowserContext } from "@playwright/test";
 
-export class AandBTestingPage {
+export class ABTestingPage {
   constructor(private page: Page) {
     this.page = page;
   }
@@ -18,9 +18,11 @@ export class AandBTestingPage {
     });
     await newPage.waitForLoadState("domcontentloaded");
     await expect(newPage).toHaveURL("https://elementalselenium.com/");
-    }
-    
-    async verifyHeader() {
-        await expect(this.page.locator('#content .example h3')).toHaveText('A/B Test Control');
-    }
+  }
+
+  async verifyHeader() {
+    await expect(this.page.locator("#content .example h3")).toHaveText(
+      "A/B Test Control"
+    );
+  }
 }

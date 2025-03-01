@@ -1,4 +1,4 @@
-import { expect, Page } from "@playwright/test";
+import { BrowserContext, expect, Page } from "@playwright/test";
 
 export class HomePage {
   readonly page: Page;
@@ -49,6 +49,37 @@ export class HomePage {
   }
   private async clickToLink(link: string) {
     await this.page.getByRole("link", { name: `${link}` }).click();
+  }
+
+  async clickForkMeOnGithubKnot() {
+    await this.page.getByAltText("Fork me on GitHub").click();
+    await expect(this.page).toHaveURL(
+      "https://github.com/saucelabs/the-internet"
+    );
+  }
+  async clickElementalSeleniumFootbarLink() {
+    // const pagePromise = this.page.waitForEvent('popup', {timeout:1000});
+    // await this.page.waitForURL("https://elementalselenium.com/");
+    // await this.page.getByRole("link", { name: "Elemental Selenium" }).click();
+    // const newPage = await pagePromise;
+    // await expect(newPage).toHaveURL("https://elementalselenium.com/");
+
+    await this.page.getByAltText('Fork me on GitHub').click();
+    await expect(this.page).toHaveURL('https://github.com/saucelabs/the-internet');
+  }
+
+  async clickElementalSeleniumFootbarLink2(context:BrowserContext){
+    await this.page.locator('a[href="http://elementalselenium.com/"]').click();
+    try {
+      const newPage = await context.waitForEvent('page', { timeout: 10000 })
+ 
+      await newPage.waitForLoadState('domcontentloaded');
+      await expect(newPage).toHaveURL('https://elementalselenium.com/');
+      return newPage;
+    } catch (error) {
+      console.error(`Elemental Selenium linkine tıklanamadı: ${error.message}`);
+      throw error;
+    }
   }
 }
 const links = [
